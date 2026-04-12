@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Draw a point (1)</title>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+    <img src="IMG_5922.jpg" alt="Example Image" style="width:384px;height:384px;"> 
+    <p>
+    <button type="button" id="clearButton">Clear</button>
+    <p>
+    <button type="button" id="pointButton">Point</button>
+    <button type="button" id="triButton">Triangle</button>
+    <button type="button" id="circleButton">Circle</button>
+    <button type="button" id="crocodileButton">Crocodile</button>
+    <p>
+    Red <input type="range" id="redSlide" min="0" max="100" value="100" class = "slider">
+    <p>
+    Green <input type="range" id="greenSlide" min="0" max="100" value="0" class = "slider">
+    <p>
+    Blue <input type="range" id="blueSlide" min="0" max="100" value="0" class = "slider">
+    <p>
+    Size <input type="range" id="sizeSlide" min="5" max="40" value="0" class = "slider">
+    <p>
+    (Circles) Segment Count <input type="range" id="segmentsSlide" min="8" max="40" value="10" class = "slider">
+    <p>
+    Opacity <input type="range" id="opacitySlide" min="0" max="100" value="100" class = "slider">
+    <p>
+    Spin <input type="range" id="spinSlide" min="0" max="360" value="0" class = "slider">
+    <p>
+  
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Point.js"></script>
+    <script src="HelloPoint1.js"></script>
+    </body>
+</html>
