@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Draw a point (1)</title>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+    <div id="fps-counter" style="
+    position: fixed; 
+    top: 10px; 
+    left: 10px; 
+    color: lime; 
+    font-family: monospace; 
+    background: rgba(0,0,0,0.5); 
+    padding: 5px;
+    z-index: 100;">
+    FPS: 0
+    </div>
+    <p>
+    Animation:
+    <button type="button" id="animationButtonOn">ON</button>
+    <button type="button" id="animationButtonOff">OFF</button>
+    <button type="button" id="flipButton">Do a Flip!</button>
+    <p>
+    Tail Joint 1 <input type="range" id="tailJoint1Slide" min="-60" max="60" value="0" class = "slider">
+    <p>
+    Tail Joint 2 <input type="range" id="tailJoint2Slide" min="-60" max="60" value="30" class = "slider">
+    <p>
+    Tail Joint 3 <input type="range" id="tailJoint3Slide" min="-60" max="60" value="-60" class = "slider">
+    <p>
+    Foot 1 <input type="range" id="foot1Slide" min="-30" max="30" value="0" class = "slider">
+    <p>
+    Foot 2 <input type="range" id="foot2Slide" min="-30" max="30" value="0" class = "slider">
+    <p>
+    Foot 3 <input type="range" id="foot3Slide" min="-30" max="30" value="0" class = "slider">
+    <p>
+    Foot 4 <input type="range" id="foot4Slide" min="-30" max="30" value="0" class = "slider">
+    <p>
+    Mouth <input type="range" id="mouthSlide" min="-5" max="15" value="0" class = "slider">
+    <p>
+    Camera Angle X <input type="range" id="angleSlide" min="0" max="360" value="0" class = "slider">
+    <p>
+    Camera Angle Y <input type="range" id="angleSlideY" min="0" max="360" value="0" class = "slider">
+    <p>
+    Camera Angle Z <input type="range" id="angleSlideZ" min="0" max="360" value="0" class = "slider">
+    <p>
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix-cse160.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Cube.js"></script>
+    <script src="Triangular Prism.js"></script>
+    <script src="PizzaBox.js"></script>
+    <script src="Sphere.js"></script>
+    <script src="BlockyAnimal.js"></script>
+    </body>
+</html>
