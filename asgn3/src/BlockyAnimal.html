@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Draw a point (1)</title>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+    <div id="fps-counter" style="
+    position: fixed; 
+    top: 10px; 
+    left: 10px; 
+    color: lime; 
+    font-family: monospace; 
+    background: rgba(0,0,0,0.5); 
+    padding: 5px;
+    z-index: 100;">
+    FPS: 0
+    </div>
+    <p>
+      Use WASD keys to pan the camera left/right/forward/backward.<br>
+      Use F key to add a block in front of the camera, and R key to delete the block in front of the camera.<br>
+      Use mouse drag to rotate the camera around the scene.
+    </p>
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix-cse160.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Cube.js"></script>
+    <script src="camera.js"></script>
+    <script src="SnowSystem.js"></script>
+    <script src="BlockyAnimal.js"></script>
+    </body>
+</html>
