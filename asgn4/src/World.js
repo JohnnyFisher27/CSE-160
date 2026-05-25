@@ -49,6 +49,7 @@ var FSHADER_SOURCE = `
   uniform vec3 u_lightPos;
   uniform vec3 u_cameraPos;
   uniform bool u_lightOn;
+  uniform vec3 u_lightColor;
   
   void main() {
     vec4 color;
@@ -101,7 +102,7 @@ var FSHADER_SOURCE = `
 
         float falloff = smoothstep(spotCutoff, spotCutoff + 0.03, cosAngle);
 
-        diffuse = vec3(gl_FragColor) * nDotL * falloff;
+        diffuse = vec3(gl_FragColor) * nDotL * falloff * u_lightColor;
         specular = vec4(1.0).rgb * specFactor * falloff; 
       }
       
@@ -138,6 +139,7 @@ let u_lightPos;
 let u_cameraPos;
 let u_lightOn;
 let u_NormalMatrix;
+let u_lightColor;
 
 function setUpWebGL() {
   // Retrieve <canvas> element
@@ -285,6 +287,12 @@ function connectVariablesToGLSL() {
     return false;
   }
 
+  u_lightColor = gl.getUniformLocation(gl.program, 'u_lightColor');
+  if (!u_lightColor) {
+    console.log('Failed to get the storage location of u_lightColor');
+    return false;
+  }
+
   var identityM = new Matrix4();
   gl.uniformMatrix4fv(u_ModelMatrix, false, identityM.elements);
 }
@@ -307,7 +315,8 @@ let g_lightPos = [0, 1, -2];
 let g_lightOn = false;
 
 let g_customMesh = null;
-let g_bunnyHeight = -1;
+
+let g_lightColor = [1.0,1.0,1.0];
 
 let lastTimestamp = 0;
 let fpsDisplay = document.getElementById('fps-counter');
@@ -328,6 +337,10 @@ function addActionsForHtmlUI() {
   document.getElementById('lightSlideX').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[0] = this.value/100; renderAllShapes(); } });
   document.getElementById('lightSlideY').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[1] = this.value/100; renderAllShapes(); } });
   document.getElementById('lightSlideZ').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightPos[2] = this.value/100; renderAllShapes(); } });
+
+  document.getElementById('lightSlideRed').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightColor[0] = this.value/100; renderAllShapes(); } });
+  document.getElementById('lightSlideGreen').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightColor[1] = this.value/100; renderAllShapes(); } });
+  document.getElementById('lightSlideBlue').addEventListener('mousemove', function(ev) { if(ev.buttons == 1) { g_lightColor[2] = this.value/100; renderAllShapes(); } });
 }
 
 function initTexture() {
@@ -659,6 +672,8 @@ function drawMap(globalRotMat) {
   gl.uniform3f(u_cameraPos, camera.eye.elements[0], camera.eye.elements[1], camera.eye.elements[2]);
 
   gl.uniform1i(u_lightOn, g_lightOn);
+
+  gl.uniform3fv(u_lightColor, g_lightColor);
 
   var light = new Cube();
   light.color = [2,2,0,1];
