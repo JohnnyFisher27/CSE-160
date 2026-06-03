@@ -10,5 +10,5 @@ Notes to Grader:
 - Ambient light, rect light, and point light with GUI elements to change attributes
 - Camera also has GUI
 - Club image skybox
-- More than 10 spheres surrounding the rave room
+- More than 20 spheres surrounding the rave room
 - Wow factor: Animated model and lights, floor texture changes color every second to simulate a dance floor
